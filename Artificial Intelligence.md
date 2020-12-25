@@ -35,3 +35,18 @@ instead of neural network.
 In finding deterministic function and constraint, it first finds some initial point not-currently-covered, and tries to find
 neighborhood of that point which is consistent under deterministic function by reducing radius.
 Then if whole initial space is covered with such covers, conditional combination of deterministic function becomes resulting function.
+
+### Code2Vec: Learning Distributed Representations of Code, Code2Seq: Generating Sequences From Structured Representations of Code
+
+Topic : Embedding, Programming Language
+
+<https://arxiv.org/pdf/1803.09473.pdf> <https://arxiv.org/pdf/1808.01400.pdf>
+
+These two consecutive models is new neural network model on programming language, which is highly structured.
+The basic principle is viewing code as a AST(Abstract Syntax Tree), and input as path between terminal nodes.
+In Code2Vec, each unique terminal and paths are embedded to d-dimensional vector. Now for each path and its two ends,
+embed it to d-dimensional vector with FC layer, and finally multiplying attention value gives resulting representation.
+In Code2Seq, each terminal is decomposed to subterminals, as ArrayList to Array + List, and representation is summed up.
+The path is encoded by LSTM to single d-dimensional vector.
+Now concatenate two ends and path, embed to d-dimensional vector with FC-layer, and multiplying attention, finally decoder network
+generates target sequence.
