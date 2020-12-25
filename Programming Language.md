@@ -41,3 +41,17 @@ Incorrectness logic is variant of Hoare logic, that is used to prove that there 
 The paper proposes incorrectness logic over simple imperative language with labelled error statement, and nondeterminism.
 The conditional execution and loop is modelled by kleene star and choice execution.
 Rules proposed in paper is sound and complete, and author proved some bugs which is not captured by static analyzer.
+
+### A Probabilistic Separation Logic
+
+Topic : Program Logic, Probabilistic Programming
+
+<https://arxiv.org/pdf/1907.10708.pdf>
+
+One of importance notion in probability theory is independence, however probabilistic logic before are not enough to prove
+independence easily. This paper, adopts separation logic's idea to probabilistic programming, designs program logic on 
+simple imperative probabilistic programming language that is available to reason on independence.
+In specific, the heap separation in separation logic becomes independence relation in this logic.
+With this logic, the author proves four cryptographic examples are safe due to independence of public inforamtion and private information.
+This logic is sound, however not complete due to randomized conditional and baseline theory on operators.
+The decidability result is not yet known, however author states that like separation logic, PSL may be helped by small model property.
