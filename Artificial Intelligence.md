@@ -68,3 +68,22 @@ Final structure forms as CNF form, with two layer representing equality and ineq
 Then from learned fuzzy-logic formula, we extract discrete formula, and after rounding it, test with theorem prover. If there is counterexample,
 add it as data and train again.
 The proposed model resulted 26/27 correctness, with 97.5% convergence rate on quadratic problem.
+
+### AI2: Safety and Robustness Certification of Neural Networks with Abstract Interpretation
+
+Topic : Neural Network Robustness
+
+<https://www.cs.rice.edu/~sc40/pubs/ai2.pdf>
+
+Recently, adversarial examples are considered as significant threat on deep learning.
+However due to complex structure of neural network, it is hard to prove some properties, like robustness.
+This paper gives abstract interpretation for neural network, including MLP and CNN, that is able to prove robustness.
+In specific, this paper treats four abstract interpretation, box, zonotope, polyhedra, union of N zonotopes.
+First, we approximate given robustness condition by one of abstract interpretation.
+Then, by viewing each layers like ReLU, FC, Conv, MaxPool as conditional affine transformation, 
+where conditional is approximated with meet(abstract notion for intersection) and join(same for union).
+Then finally, assuming that condition is given as conjunctions of inequalities, it checks whether meet of condition and abstract
+interpretation is empty. If so, robustness is proved.
+The paper runned robustness check on two dataset, MNIST and CIFAR10, with box, zonotope, polyhedra, zonotope2~zonotope128,
+where box showed bad result, polyhedra had extreme runtime, and zonotope/zonotope2~zonotope128 worked well.
+Also in comparison with Reluplex, this algorithm was much stronger in large sized neural net.
