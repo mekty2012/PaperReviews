@@ -55,3 +55,17 @@ In specific, the heap separation in separation logic becomes independence relati
 With this logic, the author proves four cryptographic examples are safe due to independence of public inforamtion and private information.
 This logic is sound, however not complete due to randomized conditional and baseline theory on operators.
 The decidability result is not yet known, however author states that like separation logic, PSL may be helped by small model property.
+
+### Aiming Low Is Harder
+
+Topic : Probabilistic Programming
+
+<https://arxiv.org/pdf/1904.01117.pdf>
+
+Computing exact expected value in probabilistic programming is infeasible, therefore approximating it with upper bound and lower bound is helpful.
+Proving upper bound is relatively simple since semantics of loop gives least fixed point, therefore showing inductiveness is enough.
+Conversely, proving lower bound is complex since inductiveness only gives least fixed point over lower bound, which may not be value.
+This paper uses well-known results in probability theory, called martingale and optional stopping time to give inductive rule for proving this.
+In martingale theory, notion called uniform integrability gives bound on intermediate value, and convergence result on (sub/super) martingales.
+To use this notion, this paper transforms some conditions on uniform integrability to weakest preexpectation transformer for probabilistic programming.
+Similar to above work, this paper also gives rule on proving lower bound of expected runtime with erf transformer.
