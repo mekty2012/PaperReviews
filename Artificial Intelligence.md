@@ -87,3 +87,21 @@ interpretation is empty. If so, robustness is proved.
 The paper runned robustness check on two dataset, MNIST and CIFAR10, with box, zonotope, polyhedra, zonotope2~zonotope128,
 where box showed bad result, polyhedra had extreme runtime, and zonotope/zonotope2~zonotope128 worked well.
 Also in comparison with Reluplex, this algorithm was much stronger in large sized neural net.
+
+### Learning Differentiable Programs with Admissible Neural Heuristics
+
+Topic : Program Learning
+
+<https://arxiv.org/pdf/2007.12101.pdf>
+
+Differentiable langauge is one of domain-specific language that is enable to optimize its parameters to approximate data.
+However determining structure of program is complex, since it has exponentially many samples with respect to depth.
+This paper proposes algorithm called NEAR, which extends A* algorithm by adding neural heuristics.
+First, the DSL is given by regular language rules, and the search space is given by graph with each node as program structure,
+and each edge as generation rule. The node is terminal if it has no nonterminal.
+Then we perform A* algorithm from initial node which is empty structure. Here the cost is defined as minimum of loss of subprograms,
+where loss is defined as sum of structural loss and data loss.
+However this cost is intractable, so instead we use neural heuristics to approximate this cost. This heuristic will be epsilon-admissible.
+Instead of rule, we replace each nonterminal as either one of RNN and MLP, preserving type, and loss of this program will be heuristic function.
+Another algorithm proposed uses branch-and-bound instead of A* algorithm.
+Comparison is done with four algorithms, simple graph search, monte carlo sampling, monte carlo tree search, and genetic algorithm. 
