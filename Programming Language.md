@@ -69,3 +69,17 @@ This paper uses well-known results in probability theory, called martingale and 
 In martingale theory, notion called uniform integrability gives bound on intermediate value, and convergence result on (sub/super) martingales.
 To use this notion, this paper transforms some conditions on uniform integrability to weakest preexpectation transformer for probabilistic programming.
 Similar to above work, this paper also gives rule on proving lower bound of expected runtime with erf transformer.
+
+### A Simple Differentiable Programming Language
+
+Topic : Differentiable Programming
+
+Currently, one of mostly well used DSL(Domain Specific Language) is differentiable programming langauge, like torch and tensorflow. 
+This paper gives formal semantics for such differentiable programming language, both operational and denotational. 
+The paper implements operational semantics based on trace semantics, which means that the variable stores its computation path, so that
+we can use the trace to compute derivative. In specific, the control commands are partially evaluated while computations are not evaluated.
+For the denotational semantics, the paper defines continuity, differentiability, and smoothness on partial functions, and define complete
+partial order on differentiable functions.
+Finally, the paper proves that given semantics is adequate, that both operational and denotational semantics coincide and complete, that denotational semantics
+is defined when operational semantics terminates.
+This paper only treats vectors and simple imperative language, and recent paper proposed differentiability on probability, higher data type with higher order functions.
