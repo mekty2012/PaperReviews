@@ -74,6 +74,8 @@ Similar to above work, this paper also gives rule on proving lower bound of expe
 
 Topic : Differentiable Programming
 
+<https://arxiv.org/abs/1911.04523>
+
 Currently, one of mostly well used DSL(Domain Specific Language) is differentiable programming langauge, like torch and tensorflow. 
 This paper gives formal semantics for such differentiable programming language, both operational and denotational. 
 The paper implements operational semantics based on trace semantics, which means that the variable stores its computation path, so that
@@ -83,3 +85,16 @@ partial order on differentiable functions.
 Finally, the paper proves that given semantics is adequate, that both operational and denotational semantics coincide and complete, that denotational semantics
 is defined when operational semantics terminates.
 This paper only treats vectors and simple imperative language, and recent paper proposed differentiability on probability, higher data type with higher order functions.
+
+### RustBelt: Securing the Foundations of the Rust Programming Language
+
+Topic : Concurrent Programming
+
+<https://people.mpi-sws.org/~dreyer/papers/rustbelt/paper.pdf>
+
+Rust Programming Language is a secure system programming language, where other system programming languages are not secure.
+The core idea of Rust is ownership type, where each pointer has owner variable so that shared mutable state cannot exists.
+However there were no proof of correctness that the type system ensures such behavior. This paper proves this by establishing lifetime logic.
+Also, one of main feature of Rust is unsafe Rust, where we can use shared mutable state, but in a controlled manner.
+The idea of verifying such unsafe type is allowing type to pick its two predicate shr and own, so that those gives what it means to
+own that pointer, or share that pointer. For example Mutex type's shr is defined as mutable inner structure.
