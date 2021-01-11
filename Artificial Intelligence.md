@@ -105,3 +105,24 @@ However this cost is intractable, so instead we use neural heuristics to approxi
 Instead of rule, we replace each nonterminal as either one of RNN and MLP, preserving type, and loss of this program will be heuristic function.
 Another algorithm proposed uses branch-and-bound instead of A* algorithm.
 Comparison is done with four algorithms, simple graph search, monte carlo sampling, monte carlo tree search, and genetic algorithm. 
+
+### Typilus: Neural Type Hints
+
+Topic : Neural Type Inference
+
+<https://arxiv.org/abs/2004.10657>
+
+Type inference is one of well known task in programming language, where classical approaches fails from undecidability.
+As an alternative, neural type inference are recently developed and used as probabilistic type suggestion.
+This paper proposes Typilus, which allows adaptive type prediction unlike other previous research.
+The usual loss used in neural type inference is classification loss, where the output is interpreted as probability of assigning each type.
+However, this loss fails when the model is given new types that were not in dataset.
+Instead, Typilus uses triple loss, and learns embedding to TypeSpace, while optimizing metric.
+And to enhance the performance, instead of classical triple loss, Typilus extends it to mini-batch. In specific, it uses sum of classification loss and metric loss.
+For the neural network model, the model uses Gated Graph Neural Network, which is given a graph with directed, labelled edges, returns feature with nodes.
+Each neighbor nodes's feature is first transformed with single linear layer, and max pooled to single vector. Then viewing this as input vector and
+feature of node as previous hidden state, we apply GRU cell. 
+Now the input graph has four kinds of nodes, token, nonterminal, symbol, vocabulary.
+Token is any lexical tokens, nonterminal is nonterminal in AST of program, symbol is each variable or function name, and finally vocabulary is subtoken of each symbol.
+Then the edges are defined with selected labels, like next-token, next-possible-use, return-to. 
+In inference task, we apply neural network to code graph, then each types are defined by using kNN in the TypeSpace.
