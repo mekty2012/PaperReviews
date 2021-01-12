@@ -84,8 +84,8 @@ Then, by viewing each layers like ReLU, FC, Conv, MaxPool as conditional affine 
 where conditional is approximated with meet(abstract notion for intersection) and join(same for union).
 Then finally, assuming that condition is given as conjunctions of inequalities, it checks whether meet of condition and abstract
 interpretation is empty. If so, robustness is proved.
-The paper runned robustness check on two dataset, MNIST and CIFAR10, with box, zonotope, polyhedra, zonotope2~zonotope128,
-where box showed bad result, polyhedra had extreme runtime, and zonotope/zonotope2~zonotope128 worked well.
+The paper runned robustness check on two dataset, MNIST and CIFAR10, with box, zonotope, polyhedra, zonotope2\~zonotope128,
+where box showed bad result, polyhedra had extreme runtime, and zonotope/zonotope2\~zonotope128 worked well.
 Also in comparison with Reluplex, this algorithm was much stronger in large sized neural net.
 
 ### Learning Differentiable Programs with Admissible Neural Heuristics
