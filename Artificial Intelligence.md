@@ -126,3 +126,19 @@ Now the input graph has four kinds of nodes, token, nonterminal, symbol, vocabul
 Token is any lexical tokens, nonterminal is nonterminal in AST of program, symbol is each variable or function name, and finally vocabulary is subtoken of each symbol.
 Then the edges are defined with selected labels, like next-token, next-possible-use, return-to. 
 In inference task, we apply neural network to code graph, then each types are defined by using kNN in the TypeSpace.
+
+### Neural Operator: Graph Kernel Network for Partial Differential Equations
+
+Topic : Neural PDE solver
+
+<https://arxiv.org/abs/2003.03485>
+
+Partial differential equations are well used in many fields of engineering. Most of solution of PDEs are solved using numerical methods.
+However numerical methods are slow, and is not re-usable, meaning that we need to solve it again if we face new PDE.
+To resolve this problem, neural network based solver was proposed. But there were two main problems in previous researches.
+First, they were not mesh-independent, meaning that the solution depends on level of discretization a lot.
+The other problem is that those achieving mesh independency needs to learn PDE again if it face new PDE.
+This paper uses two ideas to achieve this two problems.
+First, using Green's function and representing solution with Green's function, it derives iterative approximation of solution.
+Second, the integral inside the iterative approximation is implemented with graph neural network, where nodes are grid points,
+and edges exists when two nodes have distance less than threshold. This idea makes this solution mesh-independent.
