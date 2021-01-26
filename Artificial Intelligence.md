@@ -142,3 +142,18 @@ This paper uses two ideas to achieve this two problems.
 First, using Green's function and representing solution with Green's function, it derives iterative approximation of solution.
 Second, the integral inside the iterative approximation is implemented with graph neural network, where nodes are grid points,
 and edges exists when two nodes have distance less than threshold. This idea makes this solution mesh-independent.
+
+### Inference Compilation and Universal Probabilistic Programming
+
+Topic : Probabilistic Inference Compilation
+
+<https://arxiv.org/pdf/1610.09900.pdf>
+
+Probabilistic Inference is one of major topic in machine learning, where we tries to find posterior distribution and expectation
+from prior and observations. Probabilistic Programming Languages gives universal inference on these tasks, however they are not
+fast enough. This paper gives neural network based inference compilation on these universal probabilistic programming.
+First, we assume variable length of sampling and fixed length of observation. Each sampling is indexed by its address, instance,
+and the sampled value. Observation is domain specifically defined, for example Captcha image. 
+Then the neural network is RNN-like structure, first given the embedding of observations, input sequence is given by one hot encoding of
+address and instance, and previous sampled value. The output is defined by proposal, which will approximate posterior distribution.
+This architecture successfully solved two main problems, mixture model and Captcha problem where classical methods recently started to worked with.
