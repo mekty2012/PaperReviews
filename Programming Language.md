@@ -98,3 +98,21 @@ However there were no proof of correctness that the type system ensures such beh
 Also, one of main feature of Rust is unsafe Rust, where we can use shared mutable state, but in a controlled manner.
 The idea of verifying such unsafe type is allowing type to pick its two predicate shr and own, so that those gives what it means to
 own that pointer, or share that pointer. For example Mutex type's shr is defined as mutable inner structure.
+
+### Paradoxes of Probabilistic Programming
+
+Topic : Probabilistic Programming
+
+<https://arxiv.org/pdf/2101.03391.pdf>
+
+Probabilistic Programming Languages are well used in machine learning tasks, however they sometimes require to 'carefully' designed to avoid some issues.
+This paper analyzes three types of paradoxes of probabilistic programming, and proposes two new semantics for resolving this paradoxes.
+The first paradox is difference on unit, that the two conditionals chosen randomly, is evaluated on different types of value, gives different expectation value
+when we change the unit.
+The second paradox is on different number of observes, that continuous observe is always measure zero event, so branch with least number of observe dominates all others.
+The last paradox is on parameter transformation, that transforming random variables like normal to lognormal changes the expectation value.
+The main reason these paradoxes arises is that continuous observation is done on measure zero event, where discrete observation doesn't.
+So first proposal changes continuous observation to interval observation, instead of point estimation, which will give exact expected value when we let interval 
+converges to point.
+The second proposal adopts the idea of infinitesimal, instead of limit. Meaning that each continuous observation gives infinitesimal weight, which will be summed and divided.
+With this new semantics, the paper proves that semantics are well matched, and limiting behavior is correct.
