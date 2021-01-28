@@ -116,3 +116,18 @@ So first proposal changes continuous observation to interval observation, instea
 converges to point.
 The second proposal adopts the idea of infinitesimal, instead of limit. Meaning that each continuous observation gives infinitesimal weight, which will be summed and divided.
 With this new semantics, the paper proves that semantics are well matched, and limiting behavior is correct.
+
+### Towards Verified Stochastic Variational Inference for Probabilistic Programs
+
+Topic : Static Analysis, Probabilistic Programming
+
+<https://arxiv.org/abs/1907.08827>
+
+Stochastic Variational Inference is one of most popular probabilistic inference algorithm that finds approximation of posterior inference.
+Due to its use of probabilistic expressions and differentiation, the correctness of SVI highly depends on some of assumptions on implementation.
+This paper designs conditions for SVI to be defined, and implements static analyzer that checks the Pyro program.
+First, SVI mainly consists two programs, model and guide. The model is defined using sampling and conditioning, where guide only uses sample.
+The conditions for SVI to converges, is that guide's sampling must be absolutely continuous to model's sampling (model-guide match),
+parameter differentiability, and exchange of differential with integration.
+Each of conditions are weakened, for example last one with continuous differentiability, and the weakened conditions are checked with static analysis.
+As a result, they found two model-guide mismatch, and verified 31 examples. The analysis took less than a second, so it was scalable enough.
