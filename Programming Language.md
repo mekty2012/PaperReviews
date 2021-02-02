@@ -131,3 +131,19 @@ The conditions for SVI to converges, is that guide's sampling must be absolutely
 parameter differentiability, and exchange of differential with integration.
 Each of conditions are weakened, for example last one with continuous differentiability, and the weakened conditions are checked with static analysis.
 As a result, they found two model-guide mismatch, and verified 31 examples. The analysis took less than a second, so it was scalable enough.
+
+### A unifying type-theory for higher-order (amortized) cost analysis
+
+Topic : Type theory, Amortized analysis
+
+<https://www.cs.cmu.edu/~janh/assets/pdf/RajaniGDH20.pdf>
+
+Cost analysis is topic of static verification that tries to find upper bound of the cost of program, which includes elapsed time, memory use.
+In this paper, cost analysis is performed with help of type theory, so that typed program gives upper bound of cost.
+The main challenge of this paper is that this cost analysis includes amortized cost analysis, meaning it focuses complexity of algorithm, instead of operation.
+In specific, this paper uses potential method, which attaches potential to each type that allows saving credit for future use.
+The semantics of type is defined by 3-tuple (p, T, v) where p is potential, T is number of execution of rule, v is value.
+With refinement type for length of list, the paper successfully proves three examples bound, FIFO list implemented with two queue, 
+church encoding, list fold.
+There are two already existing works, RAML and dlPCF, and this paper shows that RAML can be embedded to lambda-amor without sub-exp, and
+dlPCF can be embedded to lambda-amor with sub-exp.
