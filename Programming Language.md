@@ -143,7 +143,24 @@ In this paper, cost analysis is performed with help of type theory, so that type
 The main challenge of this paper is that this cost analysis includes amortized cost analysis, meaning it focuses complexity of algorithm, instead of operation.
 In specific, this paper uses potential method, which attaches potential to each type that allows saving credit for future use.
 The semantics of type is defined by 3-tuple (p, T, v) where p is potential, T is number of execution of rule, v is value.
-With refinement type for length of list, the paper successfully proves three examples bound, FIFO list implemented with two queue, 
-church encoding, list fold.
+With refinement type for length of list, the paper successfully proves three examples bound, FIFO list implemented with two queue, church encoding, list fold.
 There are two already existing works, RAML and dlPCF, and this paper shows that RAML can be embedded to lambda-amor without sub-exp, and
 dlPCF can be embedded to lambda-amor with sub-exp.
+
+### λPSI: Exact Inference for Higher-Order Probabilistic Programs
+
+Topic : Probabilistic Programming
+
+<https://files.sri.inf.ethz.ch/website/papers/pldi20-lpsi.pdf>
+
+Most of probabilistic inference for probabilistic programs are approximation, for example monte carlo algorithms and importance sampling.
+However as they are approximation, they suffer from approximation error and nondeterminism. This leads to need of exact inference.
+Before this paper, PSI is an exact inference algorithm for simple imperative probabilsitic programs.
+This paper extends PSI system, so that we can handle conditioning on function, and to do so, it explicitly uses lebesgue measure.
+First the denotation of program is computed recursively, using iversion bracket, integration, disintegration.
+For example, sampling is denoted by sum of dirac delta or integration of variable, where observing is denoted by integrating
+iversion bracket or integrating cobserve and disintegrate it.
+Now the denotation is simplified by symbolic computation, including dirac delta substitution, linearization and guard simplification, 
+symbolic (dis-)integration.
+There exists some programs that can't be simplified enough, especially when having product of two gaussian, but lambda PSI successfully
+exactly solved 30 instances of 31 instances.
