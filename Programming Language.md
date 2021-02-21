@@ -164,3 +164,20 @@ Now the denotation is simplified by symbolic computation, including dirac delta 
 symbolic (dis-)integration.
 There exists some programs that can't be simplified enough, especially when having product of two gaussian, but lambda PSI successfully
 exactly solved 30 instances of 31 instances.
+
+### A Language for Probabilistically Oblivious Computation
+
+Topic : Security Programming, Probabilistic Programming
+
+<https://arxiv.org/abs/1711.09305>
+
+Oblivious computation prevents leak of secured data, by adding randomization to public data. 
+This paper presents lambda_obliv, which is a language for oblivious computation, where oblivious computation is ensured by type system.
+The core idea is using affine type, where each secure random bit can be observed only once in public use. 
+So in type system, each random bit are labelled whether they are secured or public, so that casting secured random bit to public bit only occurs once.
+However even with this rule, the independence between secured bits and observable trace is not ensured, due to probabilstic correlation.
+To address this problem, the type system uses probability region, which is a join lattice structure over subsets of random bits.
+Two set of random bits rho' is less than rho, if every random bits in rho are independent to rho'. 
+Now by allowing xor operation to ordered random bits, we acheive absence of probabilistic correlation.
+The exact specification of oblivious computation is given by PMTO, which argues that if two typed terms are observably equivalent,
+they both continue progress, and the observation during the execution is also equal.
