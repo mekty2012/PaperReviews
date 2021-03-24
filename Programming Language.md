@@ -181,3 +181,32 @@ Two set of random bits rho' is less than rho, if every random bits in rho are in
 Now by allowing xor operation to ordered random bits, we acheive absence of probabilistic correlation.
 The exact specification of oblivious computation is given by PMTO, which argues that if two typed terms are observably equivalent,
 they both continue progress, and the observation during the execution is also equal.
+
+### Denotational Validation of Higher-Order Bayesian Inference
+
+Topic : Probabilistic Programming
+
+<https://arxiv.org/pdf/1711.03219.pdf>
+
+This paper gives formal framework for validating higher order bayesian inferences.
+To support continuous inference which suffer measure problem on higher order functions, this paper uses Quasi Borel Space for the semantics.
+An inference representation contains 6 elements, three elements, functor T, object functions return\_X^T as X->TX, morphism functions >>=\_{X,U}^T as (X->Y)->(TX->TY) forming monadic inference, two QBS-morphisms sample^T and score^T, and the meaning morphism which should preserves return and composition, and sample is uniform distribution on [0, 1], score is mapped to rescaled measure.
+Then the inference transformation is a function indexed by Set, that t_X : TX->SX that meaning morphism is preserved.
+With this representation, this paper gives validation of two inference algorithm, sequential monte carlo and trace chain monte carlo algorithms are verified.
+Sequential Monte Carlo algorithm is defined as composition of transformations, first spawn, then loop of resample and advance, which is proven that it forms an inference transformation.
+
+### Trace types and denotational semantics for sound programmable inference in probabilistic languages
+
+Topic : Probabilstic Programming
+
+<https://dl.acm.org/doi/10.1145/3371087>
+
+Some probabilistic programming language like Gen supports user to write own probabilistic inference algorithm, which enhances language's expressiveness.
+However if user writes wrong inference, the resulting distribution may be unsound.
+This paper develops type system for such probabilistic language, called trace type, that can check soundness of three types of inference engines, IS, MCMC, VI. 
+The type of probailistic program has two types, trace type and return type. The trace type is defined as list of tuples, that each tuple consists label for probabilistic variable and its type which considers support of distribution.
+To handle branching, fixed-length loop, arbitrary length loop, the distribution also have types sum type, vector type, list type respectively.
+Importance sampling requires two conditions, posterior distribution must be absolutely continuous w.r.t. model, and two distribution must shares its base meausre.
+These two conditions are ensured by trace type equality.
+Similarly, kernel type of MCMC method ensures that modified variables are fully contained in trace types. 
+Finally variational inference operations is also ensured that KL divergence is well defined (not infinite).
