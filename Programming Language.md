@@ -210,3 +210,51 @@ Importance sampling requires two conditions, posterior distribution must be abso
 These two conditions are ensured by trace type equality.
 Similarly, kernel type of MCMC method ensures that modified variables are fully contained in trace types. 
 Finally variational inference operations is also ensured that KL divergence is well defined (not infinite).
+
+### Relatively Complete Verification of Probabilistic Programs
+
+Topic : Probabilistic Programming, Automatic Verification
+
+<https://arxiv.org/abs/2010.14548>
+
+There are various probabilistic program verification methods, which can be distinguished to two types, extensional and intensional.
+Extensional methods allows to reason arbitrary assertions, however this makes hard to verified automatically.
+Intensional methods instead defines assertion language, and restrict them so that we can easily verify.
+In specific, this paper aims to find some language, that if f is contained in that language its weakest preexpectation is also contained.
+The target language is simple imperative language with probabilistic choice with rational probability.
+Some of features of expression is carefully selected, for example we can't multiply two expectation since it can make undefined expectation for 0 times infinity.
+And to model existential quantifier and universal quantifier, we take supremum and infimum.
+Now most of language is well modelled, except while loop. To handle while loop, it uses Kozen duality and unfold loop, so that weakest preexpectation be sum of all execution paths.
+Then the sum itself is encoded with language, by introducing Godel encoding for states and finite sequence of program states. 
+Now given an oracle for comparing inequalities over assertion language, this system makes relative complete verification.
+
+### Automatic Differentiation in PCF
+
+Topic : Differentiable Programming
+
+<https://arxiv.org/abs/2011.03335>
+
+This paper develops semantics of automatic differentiation over PCF with reals, which is purely functional programming language with real numbers.
+With this semantics, paper proves that automatic differentiation over this language is almost sound, that automatic differentiation and real derivative is different for measure zero set.
+The goal of this paper is to prove that automatic differentiation is sound almost everywhere, taking any reduction strategy. 
+First automatic differentiation is implemented on trace term, where trace term contains no conditional statement and fixed point.
+Then set of stable points is defined, which is the points that epsilon ball shares same trace term. And in stable set, it is proven that automatic differentiation is correct. 
+The second step is proving that unstable points, which may be unsound points, are measure zero. To prove this, paper defines quasivariety which is a subset of union of zero sets of not identically zero basic functions, named after algebraic variety from algebraic geometry.
+Then by showing that set of unstable points is quasivariety and proving quasivariety is measure zero proves unsoundness is limited to measure zero.
+
+### λS : Computable Semantics for Differentiable Programming with Higher-Order Functions and Datatypes
+
+Topic : Differentiable Programming
+
+<https://arxiv.org/abs/2007.08017>
+
+This paper develops semantics for differentiable programming, by primitives coming from computable analysis.
+First, due to undefined derivative problems as in max/min or ReLU, this paper uses Clarke derivative which is defined as convex hull of limit points of derivatives.
+For example Clarke derivative of ReLU at 0 is \[0, 1\], since we have both 0, 1 as limit point, and taking convex hull gives \[0, 1\].
+Then with Clarke derivative, semantics of functions are defined with infinite tower of derivatives.
+The uniqueness of this paper is that it includes some higher order primitives, like intergral01, firstRoot and cutRoot, max01 and argmax01.
+All these functions are defined with help of computable analysis, and their derivative is defined by infinitesimal perturbation and implicit function theorem.
+For the implementation, paper uses arbitrary precision where if the precision can't be achieved, program may not terminate. The explicit implementation relys on
+computable analysis.
+With support of higher order primitives, paper gives library for probability distribution, surface, parametric surface.
+
