@@ -66,3 +66,18 @@ If greedy option is turned on, we substitute population with that element.
 If any of element has fitness function 0, we return that element. Otherwise, repeat the loop.
 In the result, the neural network itself has shown superior on other baselines, NL2Type, DeepTyper, sampler that samples one of 10-mostly-used types.
 And the search problem, greedy algorithm gave 60~70% of success rate, and 50% of ground truth math.
+
+DeepXplore: Automated Whitebox Testing of Deep Learning Systems
+
+Topic : Neural Network Testing
+
+<http://www.cs.columbia.edu/~junfeng/papers/deepxplore-sosp17.pdf>
+
+In the secure systems, neural network's correctness should be guaranteed, and was tested with random test and adversarial attack.
+This paper asserts that these two tests are not enough to reveal fault in neural network, suggesting neuron coverage.
+The neuron coverage is analogy of program coverage in classical software testing, where the neuron is activated if its value is higher than threshold for every test case.
+With back propagation on neural network, DeepXplore algorithm performs gradient ascent on its test data so that it can maximize differential behavior and neuron coverage.
+To maximize differentiable behavior, we choose one of DNN in SUT then maximize (\sum F_k(x)\[c\] - F_j(x)\[c\]), where F_k(x)\[c\] is probability that k-th neural network assigns class c to x. 
+To maximize neuron coverage, we randomly inactivated neuron, and use its value directly to optimization function.
+Also DeepXplore can add domain-specific constraint, for example in image datasets, paper only allowed modifying single small part of image, brightness of image, multiple tiny parts of image.
+DeepXplore is experimented on five datasets, MNIST, ImageNet, Driving, Contagio/VirusTotal, Drebin with three DNNs each, and found thousands of differential examples.
