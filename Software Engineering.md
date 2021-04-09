@@ -67,7 +67,7 @@ If any of element has fitness function 0, we return that element. Otherwise, rep
 In the result, the neural network itself has shown superior on other baselines, NL2Type, DeepTyper, sampler that samples one of 10-mostly-used types.
 And the search problem, greedy algorithm gave 60~70% of success rate, and 50% of ground truth math.
 
-DeepXplore: Automated Whitebox Testing of Deep Learning Systems
+### DeepXplore: Automated Whitebox Testing of Deep Learning Systems
 
 Topic : Neural Network Testing
 
@@ -81,3 +81,16 @@ To maximize differentiable behavior, we choose one of DNN in SUT then maximize (
 To maximize neuron coverage, we randomly inactivated neuron, and use its value directly to optimization function.
 Also DeepXplore can add domain-specific constraint, for example in image datasets, paper only allowed modifying single small part of image, brightness of image, multiple tiny parts of image.
 DeepXplore is experimented on five datasets, MNIST, ImageNet, Driving, Contagio/VirusTotal, Drebin with three DNNs each, and found thousands of differential examples.
+
+### Guiding Deep Learning System Testing using Surprise Adequacy
+
+Topic : Neural Network Testing
+
+<https://arxiv.org/abs/1808.08444>
+
+Classical neural network testing techniques relies on coverage of neurons, where these coverage measure does not involve relation to training data set.
+This paper suggests new coverage measure, called surprise adequacy which measures how surprise the new input is with respect to traning set.
+First, the activation trace is defined as activation values of subset of neurons and surprise adequecy is measured with new input's AT and training set's AT.
+The research gives two kinds of surprise adequacy, likelihood based surprise adequacy and distance based surprise adequacy.
+Likelihood based surprise adequecy measures sum of gaussian matrix kernel function between new input and training set, and distance based surprise adequecy measures ratio of distance to reference point and reference point's distance to classification boundary.
+The paper gives four research questions, 1. Does SA really capture the surprise, 2. Does the selection of layer matters, 3. Is SA related to existing coverages, 4. Can SA improve accuracy against adversarial examples, and all four questions are answered positively.
