@@ -157,3 +157,17 @@ and the sampled value. Observation is domain specifically defined, for example C
 Then the neural network is RNN-like structure, first given the embedding of observations, input sequence is given by one hot encoding of
 address and instance, and previous sampled value. The output is defined by proposal, which will approximate posterior distribution.
 This architecture successfully solved two main problems, mixture model and Captcha problem where classical methods recently started to worked with.
+
+### InferCode: Self-Supervised Learning of Code Representations by Predicting Subtrees
+
+Topic : Embedding, Programming Language
+
+Creating a universal representation for some data structure is important, so that we can handler multiple tasks in once.
+Code2Seq has designed an universal representation for generating sequence from program, however some research have shown that the representation does not perform well on other tasks.
+This paper uses self-supervised learning on program data, in particular treating its subtree as label.
+The basic idea comes from Doc2Vec, which creates representation of document, by predicting words appearing in document.
+First we first create node embedding using TBCNN, where initial value comes from each node's type and token information.
+Then we aggregate the embedding of whole tree using attention mechanism.
+For subtrees, we only use expr\_stmt, decl\_stmt, expr, condition, and learn each subtree's embedding.
+Finally the predicted distribution is defined by softmax of inner products. 
+The resulting model showed higher performance on five tasks, Code clustering, Code clone detection, Cross language code-to-code search.
