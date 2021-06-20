@@ -171,3 +171,22 @@ Then we aggregate the embedding of whole tree using attention mechanism.
 For subtrees, we only use expr\_stmt, decl\_stmt, expr, condition, and learn each subtree's embedding.
 Finally the predicted distribution is defined by softmax of inner products. 
 The resulting model showed higher performance on five tasks, Code clustering, Code clone detection, Cross language code-to-code search.
+
+### Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks
+
+Topic : Natural Language Processing
+
+<https://arxiv.org/abs/1503.00075>
+
+In classical NLP approach, sentences are parsed to syntactic structure, and it has shown good performance in entity recognition, coreference.
+After deep learning have introduced, most of networks views natural languages as hot-encoded sequence, which does not benefit from this syntactic structure.
+In this paper, the author proposes new structure called TreeLSTM, that are able to process tree structured inputs. 
+The base idea is simple, extending the LSTM network's structure so that it can receive multiple cell states and hidden states.
+To handle this, the paper suggests two variants, child sum and k-ary. Child sum add up all the hidden states to single hidden state to handle
+multiple state problem. In contrast, k-ary TreeLSTM uses k linear networks, requiring the tree becoming at most k-ary.
+Child sum TreeLSTM is called dependency TreeLSTM since it is suitable to dependency tree, and binary TreeLSTM is called Constituency TreeLSTM since it is
+well applied to binary constituency tree.
+For the experiment, the paper tested this network to sentiment classification and semantic relation tasks.
+For the sentiment classification, constituency TreeLSTM shown best result compared to LSTM, BiLSTM, and other models.
+Conversely for the semantic relation task, dependency TreeLSTM shown best result.
+
