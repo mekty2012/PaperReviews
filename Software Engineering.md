@@ -94,3 +94,19 @@ First, the activation trace is defined as activation values of subset of neurons
 The research gives two kinds of surprise adequacy, likelihood based surprise adequacy and distance based surprise adequacy.
 Likelihood based surprise adequecy measures sum of gaussian matrix kernel function between new input and training set, and distance based surprise adequecy measures ratio of distance to reference point and reference point's distance to classification boundary.
 The paper gives four research questions, 1. Does SA really capture the surprise, 2. Does the selection of layer matters, 3. Is SA related to existing coverages, 4. Can SA improve accuracy against adversarial examples, and all four questions are answered positively.
+
+### HDD: hierarchical delta debugging
+
+Topic : Fault Localization
+
+<https://dl.acm.org/doi/10.1145/1134285.1134307>
+
+Delta Debugging is well known algorithm for test minimization, finding the minimal error inducing input.
+However delta debugging is only appliable to sequential data, where structural data like JSON, source code itself, is more common in software development.
+This paper proposes new algorithm called hierarchical delta debugging, which can minimize structured test case. 
+The algorithm is simple, it applies original delta debugging algorithm to K-level children. 
+After developing HDD, the paper gives two more algorithm based on HDD, HDD+ and HDD*.
+HDD+ first runs HDD, then try final configuration phase, which checks whether each child can be removed. 
+HDD* repeatedly runs HDD until HDD can not remove any nodes. Both HDD+ and HDD* are proven to satisfy 1-tree-minimality.
+For the empirical analysis, the paper applied HDD algorithms to XML data and C programming langauge. 
+In both data, algorithms were able to extremely shorten the result, where classical delta debugging viewing data as sequence of line failed or resulted quite long result.
