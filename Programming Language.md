@@ -258,3 +258,22 @@ For the implementation, paper uses arbitrary precision where if the precision ca
 computable analysis.
 With support of higher order primitives, paper gives library for probability distribution, surface, parametric surface.
 
+### A Pre-Expectation Calculus for Probabilistic Sensitivity
+
+Topic : Probabilistic Programming
+
+<https://arxiv.org/abs/1901.06540>
+
+Sensitivity of program is measure that how program's output change on its output's change.
+In probabilistic programs, such a measure gives good bound for convergence rate of algorithms.
+This paper gives a rule-based approach to prove bound for relative weakest pre extpectation.
+Bbecause related pre expectation uses Kantorovich distance which uses infimum over probabilistic couplings, 
+related pre expection is not composable, as optimal solution is not resulted by choosing locally optimal solutions.
+So instead, paper definds bound of pre expectation that is composable. if-else statement allows bound only if its conditional
+is synchronized, and while loop is defined as least fixed point. 
+Two problem exists in this definition, first sampling statement's pre expectation is defined as Kantorovich distance, which uses infimum
+so can not be computed, and similarly lfp can not be computed.
+The rule uses approximation for both two problems, sampling rule that bounds Kantorovich distance by giving one sample of coupling,
+and loop invariant gives bound for least fixed point. 
+With these rules, the paper proves algorithmic stability of SGD and TD(0), and card shuffle algorithms.
+Also by defining TV distance with supremum and defining lower invariant, the paper gives method for proving lower bound of wpe.
