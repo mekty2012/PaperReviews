@@ -235,3 +235,19 @@ First, each vector for nodes are initialized as embedding of given data, and eac
 where if two data has same class it is initialized as (1, 0), (0, 1) if different class, otherwise (0.5, 0.5).
 Then each node vectors and edge values are updated by message passing from weighted sum of same classes and different classes.
 After the update is done, prediction is done with softmaxing the similarity edge values with training datas. 
+
+### Provable repair of deep neural networks
+
+Topic : Neural Network Repair
+
+<https://dl.acm.org/doi/10.1145/3453483.3454064>
+
+Neural Networks often fails to output correct value, however repairing the network is infeasible due to its complex behavior.
+Approaches before this paper used fine tuning, meaning that they retrain the network with wrong examples, however it usually fails and takes long time.
+This paper proposes novel structure of neural network that enables polynomial time repair of network, using the linear programming. 
+Preceding research had attempted similar proposal, however it takes exponential time, when solving the inequality.
+The problem here is that, changing weights make both linear regions and linear functions change, since they are coupled.
+So this paper proposes Decoupled DNN, where it simply uses two copy of layer, one for activation, one for real value. 
+Then the repair becomes simple linear programming problem, since it is enough to consider layer dealing with value. 
+Now since every region is linear, repair for polytope becomes simple, by repairing the vertices only.
+As a result, the algorithm shows high performance compared to fine tuning.
