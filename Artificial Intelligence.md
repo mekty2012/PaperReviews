@@ -251,3 +251,21 @@ So this paper proposes Decoupled DNN, where it simply uses two copy of layer, on
 Then the repair becomes simple linear programming problem, since it is enough to consider layer dealing with value. 
 Now since every region is linear, repair for polytope becomes simple, by repairing the vertices only.
 As a result, the algorithm shows high performance compared to fine tuning.
+
+### Fast and Precise Certification of Transformers
+
+Topic : Neural Network Verification, Seq2Seq
+
+<https://files.sri.inf.ethz.ch/website/papers/pldi21-transformers.pdf>
+
+Abstract Interpretation based neural network verification have shown good result in MLP and CNN networks, however they lack their availiability to be applied in state-of-the-art architectures.
+This paper proposes abstract interpretation based verification for state-of-the-art natural language processing network, transformer model.
+Similar to preceding researches, this paper tries to verify robustness of model, that perturbation in sequence using synonyms does not change the output.
+This paper also uses zonotope as abstract interpretation, however since perturbations is usually bounded by L1 norm or L2 norm, this paper defines Multi-norm zonotope which has noise bounded by L1 or L2 norm.
+For the affine layers like addition, subtraction, and constant multiplication, abstract transformer is canonically defined.
+For the activation layers like ReLU and Tanh, this paper extends preceding results to multi-norm case.
+Now the problem happens in dot product layer which is used in self-attention layer, since it requires multiplication of two zonotopes.
+This paper solves this problem by giving two solutions, fast solution using norm's bound, precise solution that contains all pairs of noises.
+Now to optimize the result, this paper applies noise symbol reduction, which heuristically eliminate noise symbols to reduce computation time.
+Also though exponential and reciprocal's abstract transformer is defined, softmax itself is redefined to assure that output's sum is one, and to use numerically stable version.
+
