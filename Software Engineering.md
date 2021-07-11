@@ -110,3 +110,17 @@ HDD+ first runs HDD, then try final configuration phase, which checks whether ea
 HDD* repeatedly runs HDD until HDD can not remove any nodes. Both HDD+ and HDD* are proven to satisfy 1-tree-minimality.
 For the empirical analysis, the paper applied HDD algorithms to XML data and C programming langauge. 
 In both data, algorithms were able to extremely shorten the result, where classical delta debugging viewing data as sequence of line failed or resulted quite long result.
+
+### RobOT: Robustness-Oriented Testing for Deep Learning Systems
+
+Topic : Neural Network Testing
+
+<https://arxiv.org/abs/2102.05913>
+
+Preceding researches used neuron coverage as metric for deep learning testing, however they have less correlation with actual robustness of neural network.
+This paper proposes a lightweight, fine-grained metric for adversarial example, with selection strategy and fuzzing algorithm.
+First, from the observation that loss of adversarial example onverges after enough iteration, the paper defined FOSC value that approximates possible increment that adversarial example can achieve. 
+Then if it has low FOSC value, it is already a maximal adversarial example, so it is stronger example.
+Now the paper gives two strategy, K-multisection that samples from subsections, Bi-End that samples from each end. 
+With Bi-End Strategy, the paper gives fuzzing algorithm that takes both high and low FOSC value examples.
+As a result, the paper shows that retraining with FOSC-guided adversarial examples are effective and efficient.
