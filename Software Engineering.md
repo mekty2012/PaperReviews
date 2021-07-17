@@ -124,3 +124,18 @@ Then if it has low FOSC value, it is already a maximal adversarial example, so i
 Now the paper gives two strategy, K-multisection that samples from subsections, Bi-End that samples from each end. 
 With Bi-End Strategy, the paper gives fuzzing algorithm that takes both high and low FOSC value examples.
 As a result, the paper shows that retraining with FOSC-guided adversarial examples are effective and efficient.
+
+### AUTOTRAINER: An Automatic DNN Training Problem Detection and Repair System
+
+<https://shiningrain.github.io/papers/Zhang2021ICSE.pdf>
+
+DNN training often fails to give high accuracy, due to problem in training procedure, like hyperparameter setting or probelm in architecture.
+Usually such problems are handled manually, with help of monitoring systems.
+This paper proposes AUTOTRAINER, a system for detecting and repairing training problem during the training.
+The idea is simple, AUTOTRAINER defines several metrics related to training problem, and if problem is detected, apply existing solution and retrain.
+Five problems, Gradient Vanishing/Explosion, Dying ReLU, Oscillating Loss, Slow Training are target of AUTOTRAINER.
+Gradient vanishing and explosion is detected by computing ratio of norm of gradient between layers, and accuracy.
+Dying ReLU measures number of gradient equal to zero, and accuracy. Oscillating loss and Slow training is measuerd by loss's difference.
+If such problems are detected, AUTOTRAINER applies solutions, including 'add batchnorm', 'substitute activation', 'add gradient clipping',
+'substitute initializer', 'adjust batch size', 'adjust learning rate', 'substitute optimizer'.
+As a result, AUTOTRAINER was able to detect 262 failing training with 316 problems (possibly more than one) among 495 models, and was able to repair 309 of them.
